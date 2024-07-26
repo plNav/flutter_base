@@ -2,8 +2,14 @@ import 'package:baccus_kitchen/domain/repositories/abstractions/i_login_reposito
 import 'package:baccus_kitchen/domain/repositories/dio/dio_login_repository.dart';
 import 'package:baccus_kitchen/domain/repositories/local/local_login_repository.dart';
 import 'package:baccus_kitchen/main.dart';
+import 'package:baccus_kitchen/ui/navigation/paths.dart';
+import 'package:baccus_kitchen/ui/navigation/routes.dart';
+import 'package:baccus_kitchen/ui/theme/schema/dark_theme.dart';
+import 'package:baccus_kitchen/ui/theme/schema/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class BaccusKitchen extends StatelessWidget {
   const BaccusKitchen({super.key});
@@ -20,12 +26,21 @@ class BaccusKitchen extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: isLocalMode ? localRepos : dioRepos,
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home: const SizedBox()),
+        title: 'Baccus Kitchen',
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [Locale('en'), Locale('es')],
+        debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.dark,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        routes: Routes.routes,
+        initialRoute: login,
+      ),
     );
   }
 }
