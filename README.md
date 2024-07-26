@@ -4,7 +4,8 @@
     baccus_kitchen/ 
     ├── lib/                    # Main directory where dart code is located. 
     │   ├── data/               # Object classes, cannot depend on other directories.
-    │   │   └── model/          # Classes that are being used on the UI.
+    │   │   ├── model/          # Classes that are being used on the UI.
+    │   │   ├── enum/           # Data classes for types, lists and constants.
     │   │   └── dto/            # Clases used only in API exchange.
     │   ├── domain/             # Bussiness logic and core functionallity.
     │   │   ├── bloc/           # State management.
@@ -30,7 +31,7 @@
 ```bash
 git clone https://sime_cloud@bitbucket.org/sime_cloud/baccus_kitchen.git
 ```
-  
+
 ### Basic libraries   
 ````bash  
 flutter pub add flutter_bloc equatable json_serializable json_annotation build_runner
