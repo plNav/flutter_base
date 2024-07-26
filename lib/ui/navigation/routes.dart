@@ -1,5 +1,7 @@
+import 'package:baccus_kitchen/domain/bloc/login/login_bloc.dart';
 import 'package:baccus_kitchen/ui/navigation/paths.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Routes {
   static Map<String, WidgetBuilder> get routes {
@@ -16,7 +18,10 @@ class Routes {
                 ValidateLoginEvent(username: credentials.user, password: credentials.pass)),
           child: const LoginScreen(),
         );*/
-        return const SizedBox();
+        return BlocProvider(
+          create: (context) => LoginBloc(),
+          child: const SizedBox(),
+        );
       },
     };
   }
