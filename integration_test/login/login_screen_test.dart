@@ -19,6 +19,16 @@ void main() {
 
     // Tap the login button
     await tester.tap(loginButton);
+    await Future.delayed(const Duration(seconds: 3));
+    await tester.tap(loginButton);
+    await Future.delayed(const Duration(seconds: 2));
+    await tester.tap(loginButton);
+    await Future.delayed(const Duration(seconds: 1));
+    await tester.tap(loginButton);
+    await Future.delayed(const Duration(milliseconds: 500));
+    await tester.tap(loginButton);
+    await Future.delayed(const Duration(milliseconds: 100));
+    await tester.tap(loginButton);
 
     // Rebuild the widget after the state has changed
     await tester.pump();
