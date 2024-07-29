@@ -2,9 +2,11 @@ import 'package:baccus_kitchen/ui/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import '../test_main.dart';
+
 void main() {
   testWidgets('LoginScreen has working input fields and login button', (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(home: LoginScreen()));
+    await tester.pumpWidget(const BaccusKitchenTest());
 
     // Define the finders
     final urlField = find.byType(TextField).at(0);

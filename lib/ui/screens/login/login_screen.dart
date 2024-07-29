@@ -1,3 +1,5 @@
+import 'package:baccus_kitchen/utils/console_printer.dart';
+import 'package:baccus_kitchen/utils/virtual_keyboard/virtual_keyboard.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -49,6 +51,15 @@ class LoginScreenState extends State<LoginScreen> {
               controller: _passController,
               decoration: const InputDecoration(labelText: 'Password'),
               obscureText: true,
+              onTap: () {
+                VirtualKeyboard.show(
+                    context: context,
+                    option: 'Escribe!',
+                    controllerText: _passController,
+                    onConfirmCallback: (String res) {
+                      printC(purpleB, 'Input $res');
+                    });
+              },
             ),
             const SizedBox(height: 20),
             ElevatedButton(
