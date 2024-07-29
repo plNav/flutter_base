@@ -9,24 +9,24 @@
     │   │   └── dto/            # Clases used only in API exchange.
     │   ├── domain/             # Bussiness logic and core functionallity.
     │   │   ├── bloc/           # State management.
-    │   │   ├── client/			# Classes for API clients and network interactions.
-    │   │   ├── repository/		# Data repositories to manage data sources.
+    │   │   ├── client/         # Classes for API clients and network interactions.
+    │   │   ├── repository/     # Data repositories to manage data sources.
     │   │   └── service/        # Service classes for handling business operations.
-    │   ├── ui/					# User Interface components.
+    │   ├── ui/                 # User Interface components.
     │   │   ├── navigation/     # Routing logic, screen constant definitions.
-    │   │   ├── screen/			# UI main components, not reusable.
-    │   │   ├── theme/			# Styling and Translation configurations.
-    │   │   └── widget/			# Reusable components.
-    │   └── util/				# Helper classes, functions and extensions.
-    ├── assets/					# Statics assets such as images, fonts...
-    ├── android/				# Autogen. Permissions in `app > src > main > AndroidManifest.xml`.
-    ├── windows/ 				# Autogen. Platform specific code.
-    ├── build/ 				    # Output, compilated code.
-    ├── test/ 				    # Unit Testing.
-    ├── integration_test/ 	    # UI Testing.
+    │   │   ├── screen/         # UI main components, not reusable.
+    │   │   ├── theme/          # Styling and Translation configurations.
+    │   │   └── widget/         # Reusable components.
+    │   └── util/               # Helper classes, functions and extensions.
+    ├── assets/                 # Statics assets such as images, fonts...
+    ├── android/                # Autogen. Permissions in `app > src > main > AndroidManifest.xml`.
+    ├── windows/                # Autogen. Platform specific code.
+    ├── build/                  # Output, compilated code.
+    ├── test/                   # Unit Testing.
+    ├── integration_test/       # UI Testing.
     ├── analysis_options.yaml   # Linter.
-    ├── build.yaml 				# JsonSerializable Configuration.
-    └── pubspec.yaml 			# Project configuration and dependencies.
+    ├── build.yaml              # JsonSerializable Configuration.
+    └── pubspec.yaml            # Project configuration and dependencies.
 ```
 
 > Bitbucket repo
