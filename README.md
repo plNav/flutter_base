@@ -22,6 +22,8 @@
     ├── android/				# Autogen. Permissions in `app > src > main > AndroidManifest.xml`.
     ├── windows/ 				# Autogen. Platform specific code.
     ├── build/ 				    # Output, compilated code.
+    ├── test/ 				    # Unit Testing.
+    ├── integration_test/ 	    # UI Testing.
     ├── analysis_options.yaml   # Linter.
     ├── build.yaml 				# JsonSerializable Configuration.
     └── pubspec.yaml 			# Project configuration and dependencies.
@@ -35,6 +37,16 @@ git clone https://sime_cloud@bitbucket.org/sime_cloud/baccus_kitchen.git
 ### Basic libraries   
 ````bash  
 flutter pub add flutter_bloc equatable json_serializable json_annotation build_runner
+````  
+
+### TESTING
+Launch Unit Tests
+````bash  
+flutter test
+````  
+Launch Integration Tests
+````bash  
+flutter test integration_test
 ````  
 
 ### Json Build Runner (Serialization Generator)

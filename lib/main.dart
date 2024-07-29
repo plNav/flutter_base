@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 const baccusKitchenVersion = '0.0.0.0';
 
 /// ## true->LocalRepos  false->DioRepos
-const bool isLocalMode = false;
+const bool isLocalMode = true;
 
 /// ## Auto inserts valid credentials in debug.env
 const bool isAutoLogin = true;
