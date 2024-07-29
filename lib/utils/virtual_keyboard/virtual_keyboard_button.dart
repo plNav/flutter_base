@@ -1,5 +1,5 @@
 import 'dart:io' show Platform;
-import 'package:baccus_kitchen/utils/virtual_keyboard/data/utils.dart';
+import 'package:baccus_kitchen/utils/virtual_keyboard/data/initial_case.dart';
 import 'package:baccus_kitchen/utils/virtual_keyboard/virtual_keyboard.dart';
 import 'package:flutter/material.dart';
 

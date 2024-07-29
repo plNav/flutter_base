@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:baccus_kitchen/ui/theme/schema/colors.dart';
 import 'package:baccus_kitchen/utils/console_printer.dart';
-import 'package:baccus_kitchen/utils/virtual_keyboard/data/utils.dart';
+import 'package:baccus_kitchen/utils/virtual_keyboard/data/initial_case.dart';
 import 'package:baccus_kitchen/utils/virtual_keyboard/virtual_keyboard_body.dart';
 import 'package:flutter/material.dart';
 
