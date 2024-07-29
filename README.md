@@ -35,19 +35,49 @@ git clone https://sime_cloud@bitbucket.org/sime_cloud/baccus_kitchen.git
 ```
 
 ### Basic libraries   
-````bash  
+```bash  
 flutter pub add flutter_bloc equatable json_serializable json_annotation build_runner
-````  
+```  
 
-### TESTING
+### Testing
 Launch Unit Tests
-````bash  
+```bash  
 flutter test
-````  
+```  
 Launch Integration Tests
-````bash  
+```bash  
 flutter test integration_test
-````  
+```  
+
+### Launcher Icons
+
+Docs: [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons).
+
+> Add dev_dependency and configuration in pubspec.yaml
+
+```yaml
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/sime_square.png"
+  min_sdk_android: 21
+  windows:
+    generate: true
+    image_path: "assets/sime_square.png"
+    icon_size: 48
+```
+Then build with command:
+```bash
+flutter pub run flutter_launcher_icons
+```
 
 ### Json Build Runner (Serialization Generator)
 
