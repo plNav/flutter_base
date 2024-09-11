@@ -14,11 +14,12 @@ dependencies:
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
 
-  # Network
+  # Network & Serialization
   dio: ^5.5.0+1
   json_annotation: ^4.9.0
   json_serializable: ^6.8.0
   build_runner: ^2.4.9
+  encrypt: ^5.0.3
 
   # Translations
   flutter_localizations:
@@ -33,18 +34,20 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_launcher_icons: ^0.13.1
 
-flutter_icons:
+flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/sime_square.png"
+  image_path: "assets/icon/oval_red.png"
   min_sdk_android: 21
-  windows:
+  web:
     generate: true
-    image_path: "assets/sime_square.png"
-    icon_size: 48
+    image_path:  "assets/icon/oval_red.png"
+    background_color: "#ffffff"
+    theme_color: "#000000"
 
 flutter:
   uses-material-design: true
   generate: true
   assets:
-      - assets/
+      - assets/images/icon/
+      - assets/images/readme/

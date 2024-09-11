@@ -1,15 +1,12 @@
-import 'package:baccus_kitchen/baccus_kitchen.dart';
+import 'package:baccus_kitchen/project_name_app.dart';
 import 'package:flutter/material.dart';
 
-/// ## ⚠ Check on pubspec.yaml
-const baccusKitchenVersion = '0.0.0.0';
+/// ## ⚠ Check on pubspec.yaml Must be the same
+const projectVersion = '0.0.0';
 
-/// ## true->LocalRepos  false->DioRepos
-const bool isLocalMode = true;
-
-/// ## Auto inserts valid credentials in debug.env
-const bool isAutoLogin = true;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const BaccusKitchen());
+  runApp(const ProjectNameApp(isLocalMode: true));
 }
+
+

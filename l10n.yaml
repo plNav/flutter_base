@@ -1,3 +1,6 @@
+# Folder that contains the translations
 arb-dir: lib/ui/theme/l10n
+# Default template for translations
 template-arb-file: app_en.arb
+# Output dir when build
 output-localization-file: app_localizations.dart

@@ -33,12 +33,27 @@ class LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final combatImage = BoxDecoration(
+      image: DecorationImage(
+        image: Image.asset(
+          'assets/images/readme/readme_plugins.jpg',
+          filterQuality: FilterQuality.high,
+          fit: BoxFit.fitHeight,
+        ).image,
+      ),
+    );
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            Container(
+              decoration: combatImage,
+              width: 200,
+              height: 200,
+            ),
             TextField(
               controller: _urlController,
               decoration: const InputDecoration(labelText: 'URL'),

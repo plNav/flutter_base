@@ -24,7 +24,7 @@ const String symbols = '€!¡?¿@#%&*(){}-_=<>';
 
 int count = 0;
 
-///Show console msg with color.
+///Show console msg with color. Only works on [kDebugMode]
 ///
 ///[color] constants declared in <b>utils > console_printer.dart</b>.
 ///[printLabel] default false, if true [printCWarning] before [msg].
