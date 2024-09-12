@@ -1,3 +1,8 @@
+import 'dart:async';
+
+import 'package:baccus_kitchen/data/model/user.dart';
+
 abstract class ILoginService {
-  Future<void> login(String email, String password);
+  FutureOr<String> login(User user);
+  FutureOr<User> getUserData();
 }

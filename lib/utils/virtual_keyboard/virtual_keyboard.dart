@@ -5,6 +5,23 @@ import 'package:baccus_kitchen/utils/virtual_keyboard/data/initial_case.dart';
 import 'package:baccus_kitchen/utils/virtual_keyboard/virtual_keyboard_body.dart';
 import 'package:flutter/material.dart';
 
+/* Usage Example
+ TextField(
+      controller: _passController,
+      decoration: const InputDecoration(labelText: 'Password'),
+      obscureText: true,
+      onTap: () {
+        VirtualKeyboard.show(
+            context: context,
+            option: 'Escribe!',
+            controllerText: _passController,
+            onConfirmCallback: (String res) {
+              printC(purpleB, 'Input $res');
+            });
+      },
+    ),
+ */
+
 ///Shows and Closes a virtual keyboard to handle an ui [TextEditingController]
 ///
 ///* Use this class only if [Platform.Windows]

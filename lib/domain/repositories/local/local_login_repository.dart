@@ -6,7 +6,7 @@ import 'package:baccus_kitchen/domain/repositories/abstractions/i_login_reposito
 class LocalLoginRepository implements ILoginRepository {
   @override
   FutureOr<User> getUserData() {
-    const harcodedUserForTesting = User(id: 'id', name: 'name');
+    const harcodedUserForTesting = User(id: 'testId', name: 'testName');
     return harcodedUserForTesting;
   }
 

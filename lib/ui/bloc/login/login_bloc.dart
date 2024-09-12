@@ -1,3 +1,4 @@
+import 'package:baccus_kitchen/data/model/user.dart';
 import 'package:baccus_kitchen/domain/services/abstractions/i_login_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<InputUserEvent>(_onInputUserEvent);
   }
 
-  _onInputUserEvent(InputUserEvent event, Emitter<LoginState> emit) {
-    _loginService.login(event.username, '');
+  _onInputUserEvent(InputUserEvent event, Emitter<LoginState> emit) async {
+    emit(state.copyWith(status: LoginStatus.authenticating));
+    _loginService.login(event.user);
+    await Future.delayed(const Duration(seconds: 2));
+    emit(state.copyWith(status: LoginStatus.authSuccess));
   }
 }
