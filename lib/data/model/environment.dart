@@ -2,7 +2,10 @@ import 'package:baccus_kitchen/utils/console_printer.dart';
 
 /// Provides Env Variables. Private Constructor - does not need Equatable imp or copyWith method
 class Environment {
+  /// Used by [DioClient] to inject the url in the repositories.
   final String baseUrl;
+
+  /// Used by [CryptoClient] to encrypt and decrypt data.
   final String secretKey;
 
   // Private constructor, so the class cannot be instantiated externally

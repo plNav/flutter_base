@@ -19,14 +19,8 @@ project_name/
 
 - Should not be `Serializable` - Use the `dto` classes
 
-- The `copyWith` method allows cloning of the `User` object with selective updates, especially
-  handling the `password` differently by using a functional approach (`String? Function()`).
+- The `copyWith` method allows cloning of the model object with selective updates.
 
-- The `props` list does **not include** the `password`, meaning users with the same `id` and `name`
-  are considered equal regardless of their `password`.
-
-> This class is marked as `const`, meaning all instances of `User` must be constant, which
-> enhances performance and immutability in Dart.
 > Any changes to the object can only be made via the `copyWith` method.
 
 
@@ -64,6 +58,10 @@ class User extends Equatable {
   List<Object?> get props => [id, name];
 }
 ```
+- The `password` is nullable so is handled differently by using a functional approach (`String? Function()`).
+
+- The `props` list does **not include** the `password`, meaning users with the same `id` and `name`
+  are considered equal regardless of their `password`.
 
 ### Usage Example
 

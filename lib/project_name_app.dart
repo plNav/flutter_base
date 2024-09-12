@@ -6,8 +6,8 @@ import 'package:baccus_kitchen/domain/repositories/dio/dio_login_repository.dart
 import 'package:baccus_kitchen/domain/repositories/local/local_login_repository.dart';
 import 'package:baccus_kitchen/ui/navigation/paths.dart';
 import 'package:baccus_kitchen/ui/navigation/routes.dart';
-import 'package:baccus_kitchen/ui/theme/schema/dark_theme.dart';
-import 'package:baccus_kitchen/ui/theme/schema/light_theme.dart';
+import 'package:baccus_kitchen/ui/theme/schema/dark/dark_theme.dart';
+import 'package:baccus_kitchen/ui/theme/schema/light/light_theme.dart';
 import 'package:baccus_kitchen/utils/console_printer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

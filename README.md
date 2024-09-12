@@ -1,4 +1,24 @@
-# BASE STRUCTURE
+>The full documentation are contained in 5 README.md files
+> - This one: `Abstract, Architecture & Setup`
+> - lib > data > README.md : `Core, Equatable & Serializable`
+> - lib > domain > README.md : `Repositories, Clients & Services`
+> - lib > ui > README.md : `Routing, Theme, Translations...`
+> - lib > ui > bloc > README.md : `State Management & Dependency Injection`
+
+
+# Table of Contents
+
+- [Base Structure](#base-structure)
+- [Core Dependencies](#core-dependencies)
+- [Android Studio Plugins](#android-studio-plugins)
+- [Run & Compile](#run--compile)
+   - [Environment Variables for Sensitive Data](#environment-variables-for-sensitive-data)
+- [Testing](#testing)
+- [Dev Dependencies & Assets](#dev-dependencies--assets)
+   - [Launcher Icons](#launcher-icons)
+   - [Assets](#assets)
+
+## BASE STRUCTURE
 
 ```
 project_name/ 
@@ -40,15 +60,17 @@ project_name/
 └── pubspec.yaml            # Project configuration and dependencies.
 ```
 
-> The `data`, `domain`, `ui`, `test` and `integration_test` directories have their own Readme.md file.
-
 ## CORE DEPENDENCIES
 
 ```bash  
 flutter pub add flutter_bloc equatable json_serializable json_annotation build_runner encrypt
 ```  
-
-> ⚠ Copy the `#Translations` block manually
+```bash
+flutter pub add flutter_localizations --sdk=flutter
+```
+```bash
+flutter pub add intl:any
+```
 
 In `pubspec.yaml`:
 
@@ -121,6 +143,14 @@ Downgrade Flutter
     ```bash
     flutter doctor
     ```
+   
+Generate Json Methods
+```bash
+dart run build_runner build
+```
+
+> To configure serialization see `lib` > `data` > `Readme.md`
+
 
 ## ANDROID STUDIO PLUGINS
 
