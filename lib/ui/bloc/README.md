@@ -143,14 +143,14 @@ final class LoginState extends Equatable {
 ### RepositoryProvider
 In a Flutter application, we use RepositoryProvider and MultiRepositoryProvider to inject repositories at the app level. Repositories act as the interface between your business logic and the data layer (e.g., fetching data from APIs or databases). By providing repositories this way, you ensure that they are available across the entire app and that their lifecycle is properly managed.
 
-```dart
+```
 RepositoryProvider<ILoginRepository>(
   create: (_) => DioLoginRepository(),
   child: MyApp(),
 ),
 ```
 You'll see this line in the app file, so depending on the `boolean` we'll inject the local repos or the dio ones.
-```dart
+```
 return MultiRepositoryProvider(
   providers: isLocalMode ? localRepos : dioRepos,
   child: MaterialApp(
@@ -160,7 +160,7 @@ return MultiRepositoryProvider(
 BlocProvider is a widget that provides an instance of a BLoC to its descendant widgets. This is how you inject the BLoC into the widget tree so that the widgets can interact with it using BlocBuilder, BlocListener, or BlocConsumer.
 
 You can create the bloC
-```dart
+```
 BlocProvider(
   create: (BuildContext context) => LoginBloc(loginService: context.read<ILoginService>()),
   child: YourWidget(),
@@ -168,7 +168,7 @@ BlocProvider(
 ```
 
 Or use a current one (Recommended for `showDialog` functions)
-```dart
+```
 BlocProvider.value(
   value: existingLoginBloc,
   child: YourWidget(),
@@ -178,7 +178,7 @@ BlocProvider.value(
 > `YourWidget` usually it's a complete screen and will provide the bloC in `routes.dart` but you can have more than one bloC for a screen or create new ones for smaller widgets.
 
 Here is how you can provide multiple blocs to a widget:
-```dart
+```
 MultiBlocProvider(
   providers: [
     BlocProvider<LoginBloc>(
@@ -207,7 +207,7 @@ You can add Events from the bloc itself using `add()` and read the current `stat
     emit(state.copyWith(status: LoginStatus.loading));
 
     // We can add events from the bloC or from the UI
-    add(AfterLoginEvent())
+    add(AfterLoginEvent());
   }
 ```
 > In this example `_onInputUserEvent` will be triggered when a InputUserEvent is added to the bloC
@@ -218,7 +218,7 @@ In the UI, if the BloC is Provided you can call it from context:
 ```
 
 So you can add events from the UI:
-```dart
+```
   loginBloc.add(InputUserEvent(username: "exampleUsername"));
 ```
 
@@ -228,7 +228,7 @@ But if you need to read the state use the `Builder`, `Listener` or `Consumer` wi
 
 `BlocBuilder` listens to the BLoC state and rebuilds the widget when the state changes.
 
-```dart
+```
 BlocBuilder<LoginBloc, LoginState>(
   builder: (context, state) {
     if (state.status == LoginStatus.authSuccess) {
@@ -246,7 +246,7 @@ BlocBuilder<LoginBloc, LoginState>(
 
 `BlocListener` listens to the BLoC and allows you to execute side effects based on the state.
 
-```dart
+```
 BlocListener<LoginBloc, LoginState>(
   listener: (context, state) {
     if (state.status == LoginStatus.authSuccess) {
@@ -261,7 +261,7 @@ BlocListener<LoginBloc, LoginState>(
 
 `BlocConsumer` combines both `BlocBuilder` and `BlocListener` in a single widget.
 
-```dart
+```
 BlocConsumer<LoginBloc, LoginState>(
   listener: (context, state) {
     if (state.status == LoginStatus.authSuccess) {
@@ -286,7 +286,7 @@ BlocConsumer<LoginBloc, LoginState>(
 
 - **`buildWhen`**: Controls when the `BlocBuilder` rebuilds the widget. It compares the old state and the new state and only rebuilds if the condition is true. **Improves performance**.
 
-```dart
+```
 BlocBuilder<LoginBloc, LoginState>(
   buildWhen: (previous, current) {
     return previous.status != current.status; // Only rebuild when status changes
@@ -301,7 +301,7 @@ BlocBuilder<LoginBloc, LoginState>(
 
 - **`listenWhen`**: Controls when the `BlocListener` executes its listener. Similar to `buildWhen`, it can filter which states trigger the listener.
 
-```dart
+```
 BlocListener<LoginBloc, LoginState>(
   listenWhen: (previous, current) {
     return current.status == LoginStatus.authSuccess; // Only listen when login is successful

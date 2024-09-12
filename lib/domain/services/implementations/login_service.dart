@@ -8,6 +8,6 @@ class LoginService implements ILoginService {
 
   @override
   Future<String> login(String email, String password) async {
-    return _loginRepository.login(email, password);
+    return '';
   }
 }

@@ -34,7 +34,7 @@ project_name/
 │   │   └── service/        # Service classes for handling business operations.
 │   │ 
 │   ├── ui/                 # User Interface components.
-│   │   ├── bloc/           # State management (Bloc/Cubit for UI state).
+│   │   ├── bloc/           # State management and Dependency injection.
 │   │   ├── navigation/     # Routing logic, screen constant definitions.
 │   │   ├── screen/         # UI main components, not reusable.
 │   │   ├── theme/          # Styling and Translation configurations.

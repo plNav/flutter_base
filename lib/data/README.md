@@ -1,32 +1,52 @@
-# DATA
+
+# Data Layer
+
+The **data** layer is responsible for managing all the data models, enums, and data transfer objects (DTOs). It acts as the interface for data handling, providing the means to serialize and deserialize data for API exchanges and ensuring data consistency across the app.
+
+---
+
+## Table of Contents
+
+- [DATA](#data)
+  - [Model](#model)
+    - [Equatable](#equatable)
+    - [Code Example](#code-example)
+    - [Usage Example](#usage-example)
+  - [DTO](#dto)
+    - [Json Build Runner (Serialization Generator)](#json-build-runner-serialization-generator)
+    - [Serialized Class Example](#serialized-class-example)
+    - [Generated Code](#generated-code)
+  - [Enum](#enum)
+    - [Code Examples](#code-examples)
+    - [Serialization and Deserialization](#serialization-and-deserialization)
+
+---
+
+## Overview
+
+The **data** folder is structured to separate data models, enums, and data transfer objects (DTOs) for clear organization. This ensures that the app's data layer is robust and follows a clean architecture.
 
 ```
-project_name/ 
-├── lib/
-│   ├── data/
-│   │   ├── model/
-│   │   ├── enum/
-│   │   └── dto/
+── data/
+   ├── model/
+   ├── enum/
+   └── dto/
 ```
 
-## MODEL
+---
+
+## Model
 
 - The class is an immutable and constant model.
-
 - It is defined using `Equatable` to enable value-based equality comparison.
-
-- Can have logic with custom private or public methods
-
-- Should not be `Serializable` - Use the `dto` classes
-
+- Can have logic with custom private or public methods.
+- Should not be `Serializable` - Use the `dto` classes.
 - The `copyWith` method allows cloning of the model object with selective updates.
 
 > Any changes to the object can only be made via the `copyWith` method.
 
-
 ### Equatable
 Docs: [Equatable](https://pub.dev/packages/json_serializable).
-
 
 ### Code Example
 
@@ -58,10 +78,9 @@ class User extends Equatable {
   List<Object?> get props => [id, name];
 }
 ```
-- The `password` is nullable so is handled differently by using a functional approach (`String? Function()`).
 
-- The `props` list does **not include** the `password`, meaning users with the same `id` and `name`
-  are considered equal regardless of their `password`.
+- The `password` is nullable so is handled differently by using a functional approach (`String? Function()`).
+- The `props` list does **not include** the `password`, meaning users with the same `id` and `name` are considered equal regardless of their `password`.
 
 ### Usage Example
 
@@ -92,29 +111,25 @@ void main() {
 }
 ```
 
-# DTO
+---
 
-- Constant classes with the only functionality of exchanging data with APIs or other services.
+## DTO
 
-- Cannot have logic. Don't define the `copyWith()` method
+DTOs (Data Transfer Objects) are constant classes used solely for exchanging data with APIs or other services. They must be **Serializable** and **Equatable**.
 
-- Requests can be constructed from variables or one or more models (Define Constructor)
-
-- Responses can be casted to models or variables(Define methods)
-
-- Should be `Serializable` and `Equatable` with all the props
-
-- Nullable variables are not recommended, the attribute will not be present when converted to JSON
+- Cannot have logic. Don’t define the `copyWith()` method.
+- Requests can be constructed from variables or one or more models.
+- Responses can be cast to models or variables.
+- Nullable variables are not recommended, as the attribute will not be present when converted to JSON.
 
 ### Json Build Runner (Serialization Generator)
 
 Docs: [JsonSerializable](https://pub.dev/packages/json_serializable).
 
-> Generates files to parse classes to json and vice-versa in network exchanges.
+> Generates files to parse classes to JSON and vice versa in network exchanges.  
+> Requires creating a `build.yaml` configuration file in the project root.
 
-> Requires to create a `build.yaml` configuration file in project root
-
-### Serialized Class Example `example.dart`
+### Serialized Class Example
 
 ```dart
 import 'package:equatable/equatable.dart';
@@ -123,7 +138,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'example.g.dart';
 
 @JsonSerializable()
-class Example extends Equatable{
+class Example extends Equatable {
   final String id;
   final String name;
   final String description;
@@ -143,21 +158,24 @@ class Example extends Equatable{
 }
 ```
 
-Command (Terminal) to Generate:
+### Command to Generate
+
 ```bash
 dart run build_runner build
 ```
+
 > ⚠ Use this command only in the project root!
 
-It will generate `example.g.dart`:
+This will generate the corresponding `.g.dart` file:
+
 ```dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'example.dart';
 
-// **************************************************************************
+// ***************************************************************************
 // JsonSerializableGenerator
-// **************************************************************************
+// ***************************************************************************
 
 Example _$ExampleFromJson(Map<String, dynamic> json) => Example(
       json['id'] as String,
@@ -172,10 +190,11 @@ Map<String, dynamic> _$ExampleToJson(Example instance) => <String, dynamic>{
     };
 ```
 
-## ENUM
+---
 
-- Constant lists for handling states, options...
-- Can have additional constant properties for each value
+## Enum
+
+Enums are constant lists for handling states or options. They can have additional constant properties for each value.
 
 ### Code Examples
 
@@ -209,10 +228,7 @@ enum DocumentStatus {
 }
 ```
 
-#### Serialization and Deserialization:
+### Serialization and Deserialization
 
->When you use an enum in a DTO (Data Transfer Object), Dart will automatically handle the serialization and deserialization of enum values. 
->This means you don’t need to explicitly mark the enum with `@Serializable`.
->The value will be serialized into a JSON string, and when received, it will be deserialized back into its corresponding enum value.
-
-
+> When you use an enum in a DTO, Dart automatically handles the serialization and deserialization of enum values.  
+> The value will be serialized into a JSON string, and when received, it will be deserialized back into its corresponding enum value.

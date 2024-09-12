@@ -134,7 +134,12 @@ class DioLoginRepository extends IDioRepository implements ILoginRepository {
 
 ## Services
 
-The **services/** directory contains service classes that handle the core business operations of the application. Services interact with repositories to retrieve or manipulate data as part of the business logic. They also serve as a middle layer between repositories and higher-level components like BLoCs or user-facing widgets.
+The **services/** directory contains service classes that handle the core business operations
+of the application. Services interact with repositories to retrieve or manipulate data as part
+of the business logic. They also serve as a middle layer between repositories and higher-level
+components like BLoCs or user-facing widgets.
+
+> Services are injected in `BloCs`
 
 ### Structure:
 - **abstractions/**: Interfaces that define the contract for service implementations.
@@ -162,21 +167,5 @@ class LoginService implements ILoginService {
   }
 }
 ```
-
----
-
-## Benefits of Abstractions
-
-The domain layer makes extensive use of **abstractions** (interfaces) for both repositories and services. These abstractions are essential for:
-
-1. **Easier Testing**: By using abstractions, you can mock repositories and services in unit tests, ensuring that business logic is thoroughly tested without relying on real data sources.
-
-2. **Scalability**: The separation of abstractions and implementations allows the app to scale easily. For instance, switching from a local repository to a network repository requires minimal changes to the codebase.
-
-3. **Interchangeability**: Different implementations (e.g., Dio or Local repositories) can be easily swapped depending on the environment or use case, without affecting the higher-level logic.
-
----
-
-This structure ensures a clean separation of concerns, promotes maintainability, and allows for easy testing and scalability of the business logic. The domain layer is crucial for implementing the core functionality of your app while remaining decoupled from the user interface.
 
 ---
