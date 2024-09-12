@@ -36,7 +36,11 @@ class ProjectNameApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: const [Locale('en'), Locale('es')],
+        supportedLocales: const [
+          Locale('en'), // English
+          Locale('de'), // German
+          Locale('es'), // Spanish
+        ],
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.dark,
         theme: lightTheme,

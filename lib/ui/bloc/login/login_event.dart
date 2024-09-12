@@ -15,3 +15,5 @@ class InputUserEvent extends LoginEvent {
   @override
   List<Object?> get props => [user];
 }
+
+class ConfirmErrorEvent extends LoginEvent {}

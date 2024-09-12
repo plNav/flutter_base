@@ -1,16 +1,26 @@
 import 'package:baccus_kitchen/ui/bloc/login/login_bloc.dart';
 import 'package:baccus_kitchen/ui/navigation/paths.dart';
 import 'package:baccus_kitchen/ui/screens/login/widgets/login_body.dart';
-import 'package:baccus_kitchen/ui/widgets/error_center.dart';
 import 'package:baccus_kitchen/ui/widgets/loading_center.dart';
+import 'package:baccus_kitchen/ui/widgets/popup_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final loginBloc = context.read<LoginBloc>();
+    final AppLocalizations translator = AppLocalizations.of(context)!;
+
+    //TODO I HAVE THIS STRING
+    final String result = 'loginError';
+    // AND I WANT TO USE IT THIS WAY:
+    final translated  = translator.loginError;
+
+
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
       body: BlocConsumer<LoginBloc, LoginState>(
@@ -18,13 +28,18 @@ class LoginScreen extends StatelessWidget {
           if (loginState.status == LoginStatus.authSuccess) {
             Navigator.of(context).pushReplacementNamed(home);
           }
+          if (loginState.status == LoginStatus.authFailed) {
+            PopupInfo.show(
+              context: context,
+              title: 'Login Error',
+              message: 'translator.loginState.error!.message',
+              onConfirm: () => loginBloc.add(ConfirmErrorEvent()),
+            );
+          }
         },
         builder: (context, loginState) {
           if ([LoginStatus.authenticating, LoginStatus.authSuccess].contains(loginState.status)) {
             return const LoadingCenter();
-          }
-          if (loginState.status == LoginStatus.authFailed) {
-            return const ErrorCenter();
           }
           return const LoginBody();
         },

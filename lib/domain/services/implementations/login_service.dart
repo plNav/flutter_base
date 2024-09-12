@@ -11,11 +11,11 @@ class LoginService implements ILoginService {
 
   @override
   Future<String> login(User user) async {
-    return _loginRepository.login(user);
+    return await _loginRepository.login(user);
   }
 
   @override
-  FutureOr<User> getUserData() {
-    return _loginRepository.getUserData();
+  FutureOr<User> getUserData() async {
+    return await _loginRepository.getUserData();
   }
 }

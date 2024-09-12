@@ -1,4 +1,6 @@
 {
   "exampleTranslation1": "Example Translation1",
-  "exampleTranslation2": "Example Translation2"
+  "exampleTranslation2": "Example Translation2",
+  "accept": "Accept",
+  "loginError": "Login Error"
 }

@@ -1,0 +1,4 @@
+enum ExceptionType {
+  loginUser,
+  loginPass,
+}
