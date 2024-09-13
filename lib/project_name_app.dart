@@ -1,9 +1,14 @@
 import 'package:baccus_kitchen/domain/repositories/abstractions/i_login_repository.dart';
-import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_repository.dart';
+import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_config_repository.dart';
+import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_theme_repository.dart';
 import 'package:baccus_kitchen/domain/repositories/dio/dio_login_repository.dart';
-import 'package:baccus_kitchen/domain/repositories/isar/isar_persistence_repository.dart';
+import 'package:baccus_kitchen/domain/repositories/isar/isar_persistence_config_repository.dart';
+import 'package:baccus_kitchen/domain/repositories/isar/isar_persistence_theme_repository.dart';
 import 'package:baccus_kitchen/domain/repositories/local/local_login_repository.dart';
-import 'package:baccus_kitchen/domain/repositories/local/local_persistence_repository.dart';
+import 'package:baccus_kitchen/domain/repositories/local/local_persistence_config_repository.dart';
+import 'package:baccus_kitchen/domain/repositories/local/local_persistence_theme_repository.dart';
+import 'package:baccus_kitchen/domain/services/implementations/persistence_theme_service.dart';
+import 'package:baccus_kitchen/ui/bloc/theme/theme_bloc.dart';
 import 'package:baccus_kitchen/ui/navigation/paths.dart';
 import 'package:baccus_kitchen/ui/navigation/routes.dart';
 import 'package:baccus_kitchen/ui/theme/schema/dark/dark_theme.dart';
@@ -24,34 +29,51 @@ class ProjectNameApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final localRepos = [
       RepositoryProvider<ILoginRepository>(create: (_) => LocalLoginRepository()),
-      RepositoryProvider<IPersistenceRepository>(create: (_) => LocalPersistenceRepository()),
+      RepositoryProvider<IPersistenceConfigRepository>(
+          create: (_) => LocalPersistenceConfigRepository()),
+      RepositoryProvider<IPersistenceThemeRepository>(
+          create: (_) => LocalPersistenceThemeRepository())
     ];
     final dioRepos = [
       RepositoryProvider<ILoginRepository>(create: (_) => DioLoginRepository()),
-      RepositoryProvider<IPersistenceRepository>(create: (_) => IsarPersistenceRepository()),
+      RepositoryProvider<IPersistenceConfigRepository>(
+          create: (_) => IsarPersistenceConfigRepository()),
+      RepositoryProvider<IPersistenceThemeRepository>(
+          create: (_) => IsarPersistenceThemeRepository())
     ];
 
     return MultiRepositoryProvider(
       providers: isTestingMode ? localRepos : dioRepos,
-      child: MaterialApp(
-        title: 'Project Name',
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('en'), // English
-          Locale('de'), // German
-          Locale('es'), // Spanish
-        ],
-        debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.dark,
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        routes: Routes.routes,
-        initialRoute: login,
+      child: BlocProvider(
+        create: (context) => ThemeBloc(
+            persistenceThemeService: PersistenceThemeService(
+                persistenceThemeRepository: context.read<IPersistenceThemeRepository>()))
+          ..add(LoadPersistedThemeEvent()),
+        child: BlocBuilder<ThemeBloc, ThemeState>(
+          builder: (context, themeState) {
+            return MaterialApp(
+              title: 'Project Name',
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('en'), // English
+                Locale('de'), // German
+                Locale('es'), // Spanish
+              ],
+              locale: themeState.locale,
+              debugShowCheckedModeBanner: false,
+              themeMode: themeState.themeMode,
+              theme: lightTheme,
+              darkTheme: darkTheme,
+              routes: Routes.routes,
+              initialRoute: login,
+            );
+          },
+        ),
       ),
     );
   }

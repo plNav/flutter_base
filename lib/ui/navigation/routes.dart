@@ -1,7 +1,7 @@
 import 'package:baccus_kitchen/domain/repositories/abstractions/i_login_repository.dart';
-import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_repository.dart';
+import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_config_repository.dart';
 import 'package:baccus_kitchen/domain/services/implementations/login_service.dart';
-import 'package:baccus_kitchen/domain/services/implementations/persistence_service.dart';
+import 'package:baccus_kitchen/domain/services/implementations/persistence_config_service.dart';
 import 'package:baccus_kitchen/ui/bloc/home/home_bloc.dart';
 import 'package:baccus_kitchen/ui/bloc/login/login_bloc.dart';
 import 'package:baccus_kitchen/ui/navigation/paths.dart';
@@ -17,8 +17,8 @@ class Routes {
       login: (context) => BlocProvider(
             create: (context) => LoginBloc(
               loginService: LoginService(loginRepository: context.read<ILoginRepository>()),
-              persistenceService:
-                  PersistenceService(persistenceRepository: context.read<IPersistenceRepository>()),
+              persistenceConfigService:
+                  PersistenceConfigService(persistenceRepository: context.read<IPersistenceConfigRepository>()),
             ),
             child: const LoginScreen(),
           ),

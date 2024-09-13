@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:baccus_kitchen/data/model/exception_custom.dart';
-import 'package:baccus_kitchen/data/model/persisted_data.dart';
+import 'package:baccus_kitchen/data/model/persisted_config_data.dart';
 import 'package:baccus_kitchen/data/model/user.dart';
 import 'package:baccus_kitchen/domain/services/abstractions/i_login_service.dart';
-import 'package:baccus_kitchen/domain/services/abstractions/i_persistence_service.dart';
+import 'package:baccus_kitchen/domain/services/abstractions/i_persistence_config_service.dart';
 import 'package:baccus_kitchen/utils/console_printer.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,13 +14,13 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final ILoginService _loginService;
-  final IPersistenceService _persistenceService;
+  final IPersistenceConfigService _persistenceConfigService;
 
   LoginBloc({
     required ILoginService loginService,
-    required IPersistenceService persistenceService,
+    required IPersistenceConfigService persistenceConfigService,
   })  : _loginService = loginService,
-        _persistenceService = persistenceService,
+        _persistenceConfigService = persistenceConfigService,
         super(const LoginState()) {
     on<InputUserEvent>(_onInputUserEvent);
     on<ConfirmErrorEvent>(_onConfirmErrorEvent);
@@ -39,7 +39,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         error: () => e,
       ));
     }
-    // Back to the loaded state to prevent more listener triggers
+    // Back to loaded state to prevent more listener triggers
     emit(state.copyWith(status: LoginStatus.loaded));
   }
 
@@ -48,15 +48,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   _onTestIsarEvent(TestIsarEvent event, Emitter<LoginState> emit) async {
-    final PersistedData data = PersistedData(
+    final PersistedConfigData data = PersistedConfigData(
       username: 'testUsername',
       token: 'testToken',
-      locale: 'en',
-      isLightMode: true,
     );
-    await _persistenceService.saveData(data);
+    await _persistenceConfigService.saveData(data);
     printC(warning, 'success');
-    final PersistedData? persisted = await _persistenceService.getData();
+    final PersistedConfigData? persisted = await _persistenceConfigService.getData();
     printC(warning, 'success');
   }
 }

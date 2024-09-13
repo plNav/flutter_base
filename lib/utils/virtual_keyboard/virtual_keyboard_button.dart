@@ -13,7 +13,7 @@ class ButtonKeyboard extends StatelessWidget {
   ///* Default [initial] = UPER_CASE; other: NUMERIC or LOWER_CASE.
   ///* Override [margin] & [iconSize] to adjust the Widget.
   const ButtonKeyboard({
-    Key? key,
+    super.key,
     required this.textController,
     required this.onConfirmCallback,
     required this.option,
@@ -21,7 +21,7 @@ class ButtonKeyboard extends StatelessWidget {
     this.iconSize = 50.0,
     this.initial = InitialCase.upperCase,
     this.margin = const EdgeInsets.only(left: 8.0, bottom: 12.0, top: 8.0),
-  }) : super(key: key);
+  });
 
   final TextEditingController textController;
   final void Function(String) onConfirmCallback;

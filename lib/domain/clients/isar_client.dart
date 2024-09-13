@@ -1,4 +1,5 @@
-import 'package:baccus_kitchen/data/isar/isar_persisted_data.dart';
+import 'package:baccus_kitchen/data/isar/isar_config_data.dart';
+import 'package:baccus_kitchen/data/isar/isar_theme_data.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -13,7 +14,7 @@ class IsarClient {
   Future<void> init() async {
     final dir = await getApplicationDocumentsDirectory();
     isar = await Isar.open(
-      [IsarPersistedDataSchema],
+      [IsarConfigDataSchema, IsarThemeDataSchema],
       directory: dir.path,
     );
   }
