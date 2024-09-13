@@ -139,7 +139,7 @@ class VirtualKeyboard {
                       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                       child: Icon(
                         Icons.check,
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                         size: 40,
                       ),
                     ),

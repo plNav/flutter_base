@@ -39,7 +39,7 @@ class ButtonKeyboard extends StatelessWidget {
       child: Container(
         margin: margin,
         child: IconButton(
-          icon: Icon(Icons.keyboard, color: Theme.of(context).colorScheme.onBackground),
+          icon: Icon(Icons.keyboard, color: Theme.of(context).colorScheme.onSurface),
           iconSize: iconSize,
           onPressed: () => VirtualKeyboard.show(
             context: context,

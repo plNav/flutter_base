@@ -15,7 +15,6 @@ final lightTheme = ThemeData.light().copyWith(
     secondary: _blueDaySecondary,
     onSecondary: _lightGray,
     error: _redError,
-    onBackground: _black,
     tertiary: _blueDayDrawerBackground,
     tertiaryContainer: _blueDayTransparentTertiary,
     onTertiary: _blueDayTransparent,

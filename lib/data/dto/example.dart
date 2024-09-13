@@ -1,5 +1,4 @@
 import 'package:baccus_kitchen/data/model/user.dart';
-import 'package:baccus_kitchen/data/model/user.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 

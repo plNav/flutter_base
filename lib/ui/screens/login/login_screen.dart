@@ -5,7 +5,6 @@ import 'package:baccus_kitchen/ui/widgets/loading_center.dart';
 import 'package:baccus_kitchen/ui/widgets/popup_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

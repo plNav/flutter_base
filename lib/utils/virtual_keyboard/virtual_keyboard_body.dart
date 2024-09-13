@@ -4,7 +4,6 @@ import 'package:baccus_kitchen/utils/virtual_keyboard/data/initial_case.dart';
 import 'package:baccus_kitchen/utils/virtual_keyboard/virtual_keyboard_bloc/keyboard_shift/keyboard_shift_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OnscreenKeyboard extends StatelessWidget {
   final ValueChanged<String?>? onChanged;
@@ -119,7 +118,6 @@ class _OnscreenKeyboardWidgetState extends State<OnscreenKeyboardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final translator = AppLocalizations.of(context)!;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

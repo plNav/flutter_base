@@ -14,7 +14,6 @@ final darkTheme = ThemeData.dark().copyWith(
     secondary: _blueNightSecondary,
     onSecondary: _darkGray,
     error: _redError,
-    onBackground: _white,
     tertiary: _blueNightDrawerBackground,
     tertiaryContainer: _blueNightDrawerBackground,
     onTertiary: _blueNightTransparent,
