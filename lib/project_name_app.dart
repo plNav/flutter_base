@@ -29,13 +29,17 @@ class ProjectNameApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final localRepos = [
       RepositoryProvider<ILoginRepository>(create: (_) => LocalLoginRepository()),
-      RepositoryProvider<IPersistenceConfigRepository>(create: (_) => LocalPersistenceConfigRepository()),
-      RepositoryProvider<IPersistenceThemeRepository>(create: (_) => LocalPersistenceThemeRepository()),
+      RepositoryProvider<IPersistenceConfigRepository>(
+          create: (_) => LocalPersistenceConfigRepository()),
+      RepositoryProvider<IPersistenceThemeRepository>(
+          create: (_) => LocalPersistenceThemeRepository()),
     ];
     final dioRepos = [
       RepositoryProvider<ILoginRepository>(create: (_) => DioLoginRepository()),
-      RepositoryProvider<IPersistenceConfigRepository>(create: (_) => IsarPersistenceConfigRepository()),
-      RepositoryProvider<IPersistenceThemeRepository>(create: (_) => IsarPersistenceThemeRepository()),
+      RepositoryProvider<IPersistenceConfigRepository>(
+          create: (_) => IsarPersistenceConfigRepository()),
+      RepositoryProvider<IPersistenceThemeRepository>(
+          create: (_) => IsarPersistenceThemeRepository()),
     ];
 
     return MultiRepositoryProvider(
@@ -47,31 +51,29 @@ class ProjectNameApp extends StatelessWidget {
             persistenceThemeRepository: context.read<IPersistenceThemeRepository>(),
           ),
         )..add(LoadPersistedThemeEvent()),
-        // ThemeBloc Builder for dynamically change schema or locale.
+        // Theme Bloc Builder for dynamically change schema or locale.
         child: BlocBuilder<ThemeBloc, ThemeState>(
-          builder: (context, themeState) {
-            return MaterialApp(
-              title: 'Project Name',
-              localizationsDelegates: const [
-                AppLocalizations.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const [
-                Locale('en'), // English
-                Locale('de'), // German
-                Locale('es'), // Spanish
-              ],
-              locale: themeState.locale,
-              debugShowCheckedModeBanner: false,
-              themeMode: themeState.themeMode,
-              theme: lightTheme,
-              darkTheme: darkTheme,
-              routes: Routes.routes,
-              initialRoute: login,
-            );
-          },
+          builder: (context, themeState) => MaterialApp(
+            title: 'Project Name',
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en'), // English
+              Locale('de'), // German
+              Locale('es'), // Spanish
+            ],
+            locale: themeState.locale,
+            debugShowCheckedModeBanner: false,
+            themeMode: themeState.themeMode,
+            theme: lightTheme,
+            darkTheme: darkTheme,
+            routes: Routes.routes,
+            initialRoute: login,
+          ),
         ),
       ),
     );

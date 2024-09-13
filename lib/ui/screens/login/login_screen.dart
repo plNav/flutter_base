@@ -1,6 +1,7 @@
 import 'package:baccus_kitchen/ui/bloc/login/login_bloc.dart';
 import 'package:baccus_kitchen/ui/navigation/paths.dart';
 import 'package:baccus_kitchen/ui/screens/login/widgets/login_body.dart';
+import 'package:baccus_kitchen/ui/widgets/appbar_custom.dart';
 import 'package:baccus_kitchen/ui/widgets/loading_center.dart';
 import 'package:baccus_kitchen/ui/widgets/popup_info.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,9 @@ class LoginScreen extends StatelessWidget {
     final loginBloc = context.read<LoginBloc>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: const CustomAppbar(
+        title: 'PROJECT APP NAME!',
+      ),
       body: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, loginState) {
           if (loginState.status == LoginStatus.authSuccess) {

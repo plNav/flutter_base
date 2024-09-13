@@ -51,6 +51,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final PersistedConfigData data = PersistedConfigData(
       username: 'testUsername',
       token: 'testToken',
+      password: 'testPassword',
     );
     await _persistenceConfigService.saveData(data);
     printC(warning, 'success');

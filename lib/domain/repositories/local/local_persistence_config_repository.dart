@@ -12,6 +12,7 @@ class LocalPersistenceConfigRepository implements IPersistenceConfigRepository {
     return PersistedConfigData(
       username: 'testusername',
       token: 'testtoken',
+      password: 'testpassword',
     );
   }
 

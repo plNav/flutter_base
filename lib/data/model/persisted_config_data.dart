@@ -1,19 +1,23 @@
 class PersistedConfigData {
-  final String username;
   final String token;
+  final String username;
+  final String password;
 
   PersistedConfigData({
-    required this.username,
     required this.token,
+    required this.username,
+    required this.password,
   });
 
   PersistedConfigData copyWith({
-    String? username,
     String? token,
+    String? username,
+    String? password,
   }) {
     return PersistedConfigData(
-      username: username ?? this.username,
       token: token ?? this.token,
+      username: username ?? this.username,
+      password: password ?? this.password,
     );
   }
 }

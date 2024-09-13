@@ -10,8 +10,9 @@ class IsarPersistenceConfigRepository extends IIsarRepository
   @override
   Future<void> saveData(PersistedConfigData data) async {
     final encryptedData = data.copyWith(
-      username: cryptoClient.encode(data.username),
       token: cryptoClient.encode(data.token),
+      username: cryptoClient.encode(data.username),
+      password: cryptoClient.encode(data.password),
     );
     final collection = IsarConfigData.fromModel(encryptedData);
     await isarClient.writeTxn(() async {
@@ -24,8 +25,9 @@ class IsarPersistenceConfigRepository extends IIsarRepository
     final data = await isarClient.isarConfigDatas.where().findFirst();
     final encryptedModel = data!.toModel();
     return encryptedModel.copyWith(
-      username: cryptoClient.decode(encryptedModel.username),
       token: cryptoClient.decode(encryptedModel.token),
+      username: cryptoClient.decode(encryptedModel.username),
+      password: cryptoClient.decode(encryptedModel.password),
     );
   }
 

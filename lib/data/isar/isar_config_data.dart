@@ -9,14 +9,16 @@ class IsarConfigData {
 
   final String token;
   final String username;
+  final String password;
 
   IsarConfigData({
-    required this.username,
     required this.token,
+    required this.username,
+    required this.password,
   });
 
   factory IsarConfigData.fromModel(PersistedConfigData data) =>
-      IsarConfigData(username: data.username, token: data.token);
+      IsarConfigData(token: data.token, username: data.username, password: data.password);
 
-  PersistedConfigData toModel() => PersistedConfigData(username: username, token: token);
+  PersistedConfigData toModel() => PersistedConfigData(token: token, username: username, password: password);
 }
