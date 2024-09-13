@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 const projectVersion = '0.0.0';
 
 void main() async {
+  const isTestingMode = false;
   WidgetsFlutterBinding.ensureInitialized();
-  await IsarClient().init();
-  runApp(const ProjectNameApp(isLocalMode: true));
+  // ignore: dead_code - Initialize Isar only if is not testing mode
+  if(!isTestingMode) await IsarClient().init();
+  runApp(const ProjectNameApp(isTestingMode: isTestingMode));
 }

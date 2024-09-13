@@ -1,8 +1,8 @@
 class PersistedData {
-  late String username;
-  late String token;
-  late String locale;
-  late bool isLightMode;
+  final String username;
+  final String token;
+  final String locale;
+  final bool isLightMode;
 
   PersistedData({
     required this.username,
@@ -10,4 +10,18 @@ class PersistedData {
     required this.locale,
     required this.isLightMode,
   });
+
+  PersistedData copyWith({
+    String? username,
+    String? token,
+    String? locale,
+    bool? isLightMode,
+  }) {
+    return PersistedData(
+      username: username ?? this.username,
+      token: token ?? this.token,
+      locale: locale ?? this.locale,
+      isLightMode: isLightMode ?? this.isLightMode,
+    );
+  }
 }

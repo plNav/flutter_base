@@ -17,3 +17,5 @@ class InputUserEvent extends LoginEvent {
 }
 
 class ConfirmErrorEvent extends LoginEvent {}
+
+class TestIsarEvent extends LoginEvent {}
