@@ -72,11 +72,12 @@ printCTest() {
 
 ///Prints Ratio, With & Height for the currentScreen by [context] labelled by [screen].
 void printCScreenSize(BuildContext context, String screen) {
+  final size = MediaQuery.sizeOf(context);
   print('\n');
   printC(blue, 'Screen rebuilt [$screen]');
-  printC(cyan, 'Ratio  => ${MediaQuery.of(context).size.aspectRatio}');
-  printC(cyan, 'Width  => ${MediaQuery.of(context).size.width}');
-  printC(cyan, 'Height => ${MediaQuery.of(context).size.height} $end');
+  printC(cyan, 'Ratio  => ${size.aspectRatio}');
+  printC(cyan, 'Width  => ${size.width}');
+  printC(cyan, 'Height => ${size.height} $end');
   print('\n');
 }
 
