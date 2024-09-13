@@ -29,26 +29,25 @@ class ProjectNameApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final localRepos = [
       RepositoryProvider<ILoginRepository>(create: (_) => LocalLoginRepository()),
-      RepositoryProvider<IPersistenceConfigRepository>(
-          create: (_) => LocalPersistenceConfigRepository()),
-      RepositoryProvider<IPersistenceThemeRepository>(
-          create: (_) => LocalPersistenceThemeRepository())
+      RepositoryProvider<IPersistenceConfigRepository>(create: (_) => LocalPersistenceConfigRepository()),
+      RepositoryProvider<IPersistenceThemeRepository>(create: (_) => LocalPersistenceThemeRepository()),
     ];
     final dioRepos = [
       RepositoryProvider<ILoginRepository>(create: (_) => DioLoginRepository()),
-      RepositoryProvider<IPersistenceConfigRepository>(
-          create: (_) => IsarPersistenceConfigRepository()),
-      RepositoryProvider<IPersistenceThemeRepository>(
-          create: (_) => IsarPersistenceThemeRepository())
+      RepositoryProvider<IPersistenceConfigRepository>(create: (_) => IsarPersistenceConfigRepository()),
+      RepositoryProvider<IPersistenceThemeRepository>(create: (_) => IsarPersistenceThemeRepository()),
     ];
 
     return MultiRepositoryProvider(
       providers: isTestingMode ? localRepos : dioRepos,
+      // ThemeBloc is provided in app level so it will be available everywhere.
       child: BlocProvider(
         create: (context) => ThemeBloc(
-            persistenceThemeService: PersistenceThemeService(
-                persistenceThemeRepository: context.read<IPersistenceThemeRepository>()))
-          ..add(LoadPersistedThemeEvent()),
+          persistenceThemeService: PersistenceThemeService(
+            persistenceThemeRepository: context.read<IPersistenceThemeRepository>(),
+          ),
+        )..add(LoadPersistedThemeEvent()),
+        // ThemeBloc Builder for dynamically change schema or locale.
         child: BlocBuilder<ThemeBloc, ThemeState>(
           builder: (context, themeState) {
             return MaterialApp(
