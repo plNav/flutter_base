@@ -2,5 +2,8 @@
   "exampleTranslation1": "Ejemplo Traducción1",
   "exampleTranslation2": "Ejemplo Traducción2",
   "accept": "Aceptar",
-  "loginError": "Login Error"
+  "loginError": "Login Error",
+  "loginUserEmpty": "El usuario no puede estar vacío",
+  "loginPassEmpty": "La contraseña no puede estar vacía",
+  "loginIncorrect": "El usuario o la contraseña no son válidos"
 }

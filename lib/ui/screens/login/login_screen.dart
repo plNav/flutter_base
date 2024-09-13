@@ -13,13 +13,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginBloc = context.read<LoginBloc>();
-    final AppLocalizations translator = AppLocalizations.of(context)!;
-
-    //TODO I HAVE THIS STRING
-    final String result = 'loginError';
-    // AND I WANT TO USE IT THIS WAY:
-    final translated  = translator.loginError;
-
 
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
@@ -29,10 +22,11 @@ class LoginScreen extends StatelessWidget {
             Navigator.of(context).pushReplacementNamed(home);
           }
           if (loginState.status == LoginStatus.authFailed) {
+            final titleAndMessage = loginState.error!.getTitleAndMessage(context);
             PopupInfo.show(
               context: context,
-              title: 'Login Error',
-              message: 'translator.loginState.error!.message',
+              title: titleAndMessage[0],
+              message: titleAndMessage[1],
               onConfirm: () => loginBloc.add(ConfirmErrorEvent()),
             );
           }

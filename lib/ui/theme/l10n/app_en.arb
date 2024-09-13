@@ -2,5 +2,8 @@
   "exampleTranslation1": "Example Translation1",
   "exampleTranslation2": "Example Translation2",
   "accept": "Accept",
-  "loginError": "Login Error"
+  "loginError": "Login Error",
+  "loginUserEmpty": "The username cannot be empty",
+  "loginPassEmpty": "The password cannot be empty",
+  "loginIncorrect": "The username or password is incorrect"
 }

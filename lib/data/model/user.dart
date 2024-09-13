@@ -1,3 +1,5 @@
+import 'package:baccus_kitchen/data/enum/exception_type.dart';
+import 'package:baccus_kitchen/data/model/exception_custom.dart';
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
@@ -19,8 +21,16 @@ class User extends Equatable {
     );
   }
 
+  /// Throws custom exception if empty name or password
+  validate() {
+    if (name.isEmpty) {
+      throw CustomException(type: ExceptionType.loginUserEmpty);
+    }
+    if (password == null || password!.isEmpty) {
+      throw CustomException(type: ExceptionType.loginPassEmpty);
+    }
+  }
+
   @override
   List<Object?> get props => [id, name];
-
-
 }

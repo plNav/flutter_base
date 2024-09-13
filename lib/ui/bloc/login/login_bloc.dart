@@ -31,7 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         error: () => e,
       ));
     }
-    // Back to the loaded state to prevent listener triggers
+    // Back to the loaded state to prevent more listener triggers
     emit(state.copyWith(status: LoginStatus.loaded));
   }
 
