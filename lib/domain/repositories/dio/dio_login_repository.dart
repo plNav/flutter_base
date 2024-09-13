@@ -13,24 +13,26 @@ class DioLoginRepository extends IDioRepository implements ILoginRepository {
 
   @override
   FutureOr<User> getUserData() async {
+    await connectionClient.validateConnection();
     final loginEndpoint = '$url/auth';
     final res = await dio.get(loginEndpoint);
     final json = await res.data;
     final UserDto user = UserDto.fromJson(json);
-    return user.toUser();
+    return user.toModel();
   }
 
   @override
   FutureOr<String> login(User user) async {
+    await connectionClient.validateConnection();
     user.validate();
     final loginEndpoint = '$url/auth';
     try {
-      final data = UserDto.fromUser(user).toJson();
+      final data = UserDto.fromModel(user).toJson();
       final res = await dio.post(loginEndpoint, data: data);
       final json = await res.data;
       final LoginResponseDto loginDto = LoginResponseDto.fromJson(json);
-      if (loginDto.token.isNotEmpty) dioClient.setToken(loginDto.token);
-      return loginDto.username;
+      dioClient.setToken(loginDto.token);
+      return loginDto.token;
     } catch (e) {
       throw CustomException(
         type: ExceptionType.loginIncorrect,

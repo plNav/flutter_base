@@ -40,6 +40,8 @@ class CustomException implements Exception {
       case ExceptionType.loginIncorrect:
         titleAndMessage[0] = translator.loginError;
         titleAndMessage[1] = translator.loginIncorrect;
+      case ExceptionType.noInternet:
+        // TODO: Handle this case.
     }
     assert(titleAndMessage.length == 2, '$titleAndMessage must have 2 elements (title & message)');
     return titleAndMessage;

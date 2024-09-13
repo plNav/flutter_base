@@ -1,21 +1,25 @@
 import 'dart:io';
 
-import 'package:baccus_kitchen/utils/console_printer.dart';
+import 'package:baccus_kitchen/data/enum/exception_type.dart';
+import 'package:baccus_kitchen/data/model/exception_custom.dart';
 
-/// Singleton class to retrieve connection status [isConnected]
+/// Singleton class to retrieve connection status [validateConnection]
 class ConnectionClient {
-  static final instance = ConnectionClient._internal();
+  static final _connectionInstance = ConnectionClient._internal();
+
+  factory ConnectionClient() => _connectionInstance;
 
   ConnectionClient._internal();
 
-  /// Returns true if connected, false otherwise
-  Future<bool> isConnected() async {
+  /// Throws a custom error if internet connection is not available
+  validateConnection() async {
     try {
       final result = await InternetAddress.lookup('google.es');
-      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+      if (!(result.isNotEmpty && result[0].rawAddress.isNotEmpty)) {
+        throw CustomException(type: ExceptionType.noInternet);
+      }
     } on SocketException catch (e) {
-      printC(warning, 'Unable to read connectivity from internet, $e');
-      return false;
+      throw CustomException(type: ExceptionType.noInternet, originalException: e);
     }
   }
 }

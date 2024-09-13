@@ -20,13 +20,13 @@ class UserDto extends Equatable {
 
   Map<String, dynamic> toJson() => _$UserDtoToJson(this);
 
-  factory UserDto.fromUser(User user) => UserDto(
+  factory UserDto.fromModel(User user) => UserDto(
         id: user.id,
         name: user.name,
         password: user.password ?? '',
       );
 
-  User toUser() => User(
+  User toModel() => User(
         id: id,
         name: name,
         password: password,

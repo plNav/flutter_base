@@ -17,8 +17,8 @@ class Example extends Equatable{
   Map<String, dynamic> toJson() => _$ExampleToJson(this);
 
   // User
-  factory Example.fromUser(User user) => Example(user.id, user.name, 'empty description');
-  User toUser() => User(id: id, name: name);
+  factory Example.fromModel(User user) => Example(user.id, user.name, 'empty description');
+  User toModel() => User(id: id, name: name);
 
   @override
   List<Object?> get props => [id, name, description];
