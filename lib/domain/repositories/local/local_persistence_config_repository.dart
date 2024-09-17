@@ -1,5 +1,5 @@
-import 'package:baccus_kitchen/data/model/persisted_config_data.dart';
-import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_config_repository.dart';
+import '../../../data/model/persisted_config_data.dart';
+import '../abstractions/i_persistence_config_repository.dart';
 
 class LocalPersistenceConfigRepository implements IPersistenceConfigRepository {
   @override
@@ -9,22 +9,12 @@ class LocalPersistenceConfigRepository implements IPersistenceConfigRepository {
 
   @override
   Future<PersistedConfigData?> getData() async {
-    return PersistedConfigData(
-      username: 'testusername',
-      token: 'testtoken',
-      password: 'testpassword',
-    );
+    return null;
   }
 
-  @override
-  Future<List<PersistedConfigData>> getAllData() {
-    // TODO: implement getAllData
-    throw UnimplementedError();
-  }
 
   @override
-  Future<void> deleteData(int id) {
-    // TODO: implement deleteData
-    throw UnimplementedError();
+  Future<void> deleteAll() async {
+    return;
   }
 }

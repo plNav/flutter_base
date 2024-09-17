@@ -81,7 +81,6 @@ IsarConfigData _isarConfigDataDeserialize(
     token: reader.readString(offsets[1]),
     username: reader.readString(offsets[2]),
   );
-  object.id = id;
   return object;
 }
 
@@ -112,9 +111,7 @@ List<IsarLinkBase<dynamic>> _isarConfigDataGetLinks(IsarConfigData object) {
 }
 
 void _isarConfigDataAttach(
-    IsarCollection<dynamic> col, Id id, IsarConfigData object) {
-  object.id = id;
-}
+    IsarCollection<dynamic> col, Id id, IsarConfigData object) {}
 
 extension IsarConfigDataQueryWhereSort
     on QueryBuilder<IsarConfigData, IsarConfigData, QWhere> {

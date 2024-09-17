@@ -12,7 +12,6 @@ The **domain** layer is responsible for the business logic and core functionalit
 - [Clients](#clients)
 - [Repositories](#repositories)
 - [Services](#services)
-- [Benefits of Abstractions](#benefits-of-abstractions)
 
 ---
 

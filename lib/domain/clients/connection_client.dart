@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:baccus_kitchen/data/enum/exception_type.dart';
-import 'package:baccus_kitchen/data/model/exception_custom.dart';
+import '../../data/enum/exception_type.dart';
+import '../../data/model/exception_custom.dart';
 
 /// Singleton class to retrieve connection status [validateConnection]
 class ConnectionClient {

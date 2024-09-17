@@ -1,5 +1,5 @@
-import 'package:baccus_kitchen/data/model/persisted_theme_data.dart';
-import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_theme_repository.dart';
+import '../../../data/model/persisted_theme_data.dart';
+import '../abstractions/i_persistence_theme_repository.dart';
 
 class LocalPersistenceThemeRepository implements IPersistenceThemeRepository {
   @override
@@ -9,18 +9,11 @@ class LocalPersistenceThemeRepository implements IPersistenceThemeRepository {
 
   @override
   Future<PersistedThemeData?> getData() async {
-    return PersistedThemeData(themeMode: 'themeMode', locale: 'locale');
+    return null;
   }
 
   @override
-  Future<List<PersistedThemeData>> getAllData() {
-    // TODO: implement getAllData
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> deleteData(int id) {
-    // TODO: implement deleteData
-    throw UnimplementedError();
+  Future<void> deleteAll() async {
+    return;
   }
 }

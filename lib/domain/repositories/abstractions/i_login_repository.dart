@@ -1,9 +1,11 @@
 import 'dart:async';
 
-import 'package:baccus_kitchen/data/model/user.dart';
+import '../../../data/model/user.dart';
 
 abstract class ILoginRepository {
-  /// Returns token
+  /// Returns token to save it
   FutureOr<String> login(User user);
+
+  /// Obtains user basic info (no params - token validation)
   FutureOr<User> getUserData();
 }

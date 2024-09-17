@@ -1,11 +1,12 @@
-import 'package:baccus_kitchen/data/model/persisted_config_data.dart';
+import '../model/persisted_config_data.dart';
 import 'package:isar/isar.dart';
 
 part 'isar_config_data.g.dart';
 
 @Collection()
 class IsarConfigData {
-  Id id = Isar.autoIncrement;
+  //Id id = Isar.autoIncrement;
+  final Id id = 0;
 
   final String token;
   final String username;

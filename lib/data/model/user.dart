@@ -1,13 +1,13 @@
-import 'package:baccus_kitchen/data/enum/exception_type.dart';
-import 'package:baccus_kitchen/data/model/exception_custom.dart';
 import 'package:equatable/equatable.dart';
+import '../enum/exception_type.dart';
+import 'exception_custom.dart';
 
 class User extends Equatable {
   final String id;
   final String name;
   final String? password;
 
-  const User({required this.id, required this.name, this.password});
+  const User({this.id = '', required this.name, this.password});
 
   User copyWith({
     String? id,

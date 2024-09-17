@@ -1,13 +1,14 @@
 import 'dart:async';
 
-import 'package:baccus_kitchen/data/model/user.dart';
-import 'package:baccus_kitchen/domain/repositories/abstractions/i_login_repository.dart';
+import '../../../data/model/user.dart';
+import '../abstractions/i_login_repository.dart';
+
 
 class LocalLoginRepository implements ILoginRepository {
   @override
   FutureOr<User> getUserData() async {
-    const harcodedUserForTesting = User(id: 'testId', name: 'testName');
-    return harcodedUserForTesting;
+    const hardcodedUserForTesting = User(id: 'testId', name: 'testName');
+    return hardcodedUserForTesting;
   }
 
   @override

@@ -73,7 +73,6 @@ IsarThemeData _isarThemeDataDeserialize(
     locale: reader.readString(offsets[0]),
     themeMode: reader.readString(offsets[1]),
   );
-  object.id = id;
   return object;
 }
 
@@ -102,9 +101,7 @@ List<IsarLinkBase<dynamic>> _isarThemeDataGetLinks(IsarThemeData object) {
 }
 
 void _isarThemeDataAttach(
-    IsarCollection<dynamic> col, Id id, IsarThemeData object) {
-  object.id = id;
-}
+    IsarCollection<dynamic> col, Id id, IsarThemeData object) {}
 
 extension IsarThemeDataQueryWhereSort
     on QueryBuilder<IsarThemeData, IsarThemeData, QWhere> {

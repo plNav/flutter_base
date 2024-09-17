@@ -1,5 +1,5 @@
-import 'package:baccus_kitchen/data/model/user.dart'; // Assuming you have a User model
 import 'package:equatable/equatable.dart';
+import '../model/user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_dto.g.dart';

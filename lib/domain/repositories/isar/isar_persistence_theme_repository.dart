@@ -1,11 +1,9 @@
-import 'package:baccus_kitchen/data/isar/isar_config_data.dart';
-import 'package:baccus_kitchen/data/isar/isar_theme_data.dart';
-import 'package:baccus_kitchen/data/model/persisted_config_data.dart';
-import 'package:baccus_kitchen/data/model/persisted_theme_data.dart';
-import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_config_repository.dart';
-import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_theme_repository.dart';
-import 'package:baccus_kitchen/domain/repositories/i_isar_repository.dart';
 import 'package:isar/isar.dart';
+
+import '../../../data/isar/isar_theme_data.dart';
+import '../../../data/model/persisted_theme_data.dart';
+import '../abstractions/i_persistence_theme_repository.dart';
+import '../i_isar_repository.dart';
 
 /// Handles the local persistence of [IsarConfigData] as Shared Preferences with encryption.
 class IsarPersistenceThemeRepository extends IIsarRepository
@@ -20,20 +18,16 @@ class IsarPersistenceThemeRepository extends IIsarRepository
 
   @override
   Future<PersistedThemeData?> getData() async {
-    final data = await isarClient.isarThemeDatas.where().findFirst();
-    return data!.toModel();
+    try {
+      final data = await isarClient.isarThemeDatas.where().findFirst();
+      return data!.toModel();
+    } catch (e) {
+      return null;
+    }
   }
 
   @override
-  Future<List<PersistedThemeData>> getAllData() async {
-    final List<IsarThemeData> data = await isarClient.isarThemeDatas.where().findAll();
-    return data.map((d) => d.toModel()).toList();
-  }
-
-  @override
-  Future<void> deleteData(int id) async {
-    await isarClient.writeTxn(() async {
-      await isarClient.isarThemeDatas.delete(id);
-    });
+  Future<void> deleteAll() async {
+    await isarClient.writeTxn(() async => await isarClient.isarThemeDatas.clear());
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 part 'dark_colors.dart';
 part 'dark_fonts.dart';
 
@@ -20,7 +20,11 @@ final darkTheme = ThemeData.dark().copyWith(
     primaryContainer: _purpleNightPrimaryVariant,
     secondaryContainer: _orangeNightSecondaryVariant,
   ),
-  appBarTheme: const AppBarTheme(
+
+  /// We use the schema to overwrite custom widgets
+  /// Other way is to override every widget theme:
+
+/*  appBarTheme: const AppBarTheme(
     backgroundColor: _darkGray,
     titleTextStyle: TextStyle(color: _white, fontWeight: FontWeight.bold, fontSize: 18),
     systemOverlayStyle: SystemUiOverlayStyle(
@@ -36,6 +40,15 @@ final darkTheme = ThemeData.dark().copyWith(
   ),
   dividerTheme: const DividerThemeData(
     color: _white,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      foregroundColor: _white,
+      backgroundColor: _blueNightMedium,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+    ),
   ),
   inputDecorationTheme: const InputDecorationTheme(
     focusedBorder: OutlineInputBorder(
@@ -59,5 +72,5 @@ final darkTheme = ThemeData.dark().copyWith(
   snackBarTheme: const SnackBarThemeData(
     backgroundColor: _blueNightSecondary,
     behavior: SnackBarBehavior.floating,
-  ),
+  ),*/
 );

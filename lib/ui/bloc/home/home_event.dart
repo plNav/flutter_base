@@ -8,3 +8,5 @@ abstract class HomeEvent extends Equatable {
 }
 
 class GetUserInfoEvent extends HomeEvent {}
+
+class ClearStorageEvent extends HomeEvent {}

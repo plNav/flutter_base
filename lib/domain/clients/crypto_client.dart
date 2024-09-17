@@ -1,16 +1,17 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:baccus_kitchen/data/model/environment.dart';
-import 'package:baccus_kitchen/utils/console_printer.dart';
 import 'package:encrypt/encrypt.dart' as crypto;
 import 'package:flutter/foundation.dart';
 
+import '../../data/model/environment.dart';
+import '../../utils/console_printer.dart';
+
 /// The AES-256 key from [Environment] must be exactly 32 characters (256 bits).
-/// If there is no valid key in [kDebugMode] it will be generated automatically, in production
-/// throws an error.
-/// Example of a valid key: 'aBcDeFgHiJkLmNoPqRsTuVwXyZ012345'
-/// 2 public methods [encode] and [decode]
+/// If there is no valid key in [kDebugMode] it will be generated automatically,
+/// in production throws an error.
+/// - Example of a valid key: 'aBcDeFgHiJkLmNoPqRsTuVwXyZ012345'
+/// - 2 public methods [encode] and [decode]
 class CryptoClient {
   static final CryptoClient _cryptoInstance = CryptoClient._internal();
 

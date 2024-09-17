@@ -1,11 +1,14 @@
-import 'package:baccus_kitchen/ui/bloc/login/login_bloc.dart';
-import 'package:baccus_kitchen/ui/navigation/paths.dart';
-import 'package:baccus_kitchen/ui/screens/login/widgets/login_body.dart';
-import 'package:baccus_kitchen/ui/widgets/appbar_custom.dart';
-import 'package:baccus_kitchen/ui/widgets/loading_center.dart';
-import 'package:baccus_kitchen/ui/widgets/popup_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../utils/console_printer.dart';
+import '../../bloc/login/login_bloc.dart';
+import '../../navigation/paths.dart';
+import '../../widgets/appbar_custom.dart';
+import '../../widgets/loading_center.dart';
+import '../../widgets/popup_info.dart';
+import 'widgets/login_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -13,8 +16,11 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginBloc = context.read<LoginBloc>();
+    final colorScheme = Theme.of(context).colorScheme;
+    printCScreenSize(context, 'Login Screen');
 
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       appBar: const CustomAppbar(
         title: 'PROJECT APP NAME!',
       ),
@@ -35,7 +41,7 @@ class LoginScreen extends StatelessWidget {
         },
         builder: (context, loginState) {
           if ([LoginStatus.authenticating, LoginStatus.authSuccess].contains(loginState.status)) {
-            return const LoadingCenter();
+            return LoadingCenter(text: AppLocalizations.of(context)!.loadingAuth);
           }
           return const LoginBody();
         },

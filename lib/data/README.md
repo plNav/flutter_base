@@ -7,7 +7,6 @@ The **data** layer is responsible for managing all the data models, enums, and d
 
 ## Table of Contents
 
-- [DATA](#data)
   - [Model](#model)
     - [Equatable](#equatable)
     - [Code Example](#code-example)
@@ -15,7 +14,6 @@ The **data** layer is responsible for managing all the data models, enums, and d
   - [DTO](#dto)
     - [Json Build Runner (Serialization Generator)](#json-build-runner-serialization-generator)
     - [Serialized Class Example](#serialized-class-example)
-    - [Generated Code](#generated-code)
   - [Enum](#enum)
     - [Code Examples](#code-examples)
     - [Serialization and Deserialization](#serialization-and-deserialization)

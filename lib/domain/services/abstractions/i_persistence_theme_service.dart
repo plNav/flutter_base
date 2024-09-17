@@ -1,11 +1,13 @@
-import 'package:baccus_kitchen/data/model/persisted_theme_data.dart';
+import '../../../data/model/persisted_theme_data.dart';
 
 abstract class IPersistenceThemeService {
+
+  /// ### Stores theme data locally.
   Future<void> saveData(PersistedThemeData data);
 
+  /// ### Obtains stored data with [id]=0
   Future<PersistedThemeData?> getData();
 
-  Future<List<PersistedThemeData>> getAllData();
-
-  Future<void> deleteData(int id);
+  /// ### Clears PersistedThemeData all registries
+  Future<void> deleteAll();
 }

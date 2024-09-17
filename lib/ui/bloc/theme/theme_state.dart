@@ -1,12 +1,12 @@
 part of 'theme_bloc.dart';
 
 final class ThemeState extends Equatable {
-  final ThemeMode themeMode;
-  final Locale locale;
+  final ThemeMode? themeMode;
+  final Locale? locale;
 
   const ThemeState({
-    this.themeMode = ThemeMode.light,
-    this.locale = const Locale('en'),
+    this.themeMode,
+    this.locale,
   });
 
   ThemeState copyWith({

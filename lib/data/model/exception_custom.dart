@@ -1,5 +1,5 @@
-import 'package:baccus_kitchen/data/enum/exception_type.dart';
 import 'package:flutter/material.dart';
+import '../enum/exception_type.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomException implements Exception {
@@ -25,10 +25,12 @@ class CustomException implements Exception {
     ''';
   }
 
-  /// returns 2 size array, [0] = title & [1] = message.
+  /// ### returns 2 size array:
+  /// - ### [0] = Error title.
+  /// - ### [1] = Error message.
   List<String> getTitleAndMessage(BuildContext context) {
     final AppLocalizations translator = AppLocalizations.of(context)!;
-    List<String> titleAndMessage = ['', ''];
+    final List<String> titleAndMessage = ['title', 'message'];
 
     switch (type) {
       case ExceptionType.loginUserEmpty:
@@ -41,8 +43,8 @@ class CustomException implements Exception {
         titleAndMessage[0] = translator.loginError;
         titleAndMessage[1] = translator.loginIncorrect;
       case ExceptionType.noInternet:
-        // TODO: Handle this case.
-    }
+        titleAndMessage[0] = translator.internetError;
+        titleAndMessage[1] = translator.internetUnavailable;    }
     assert(titleAndMessage.length == 2, '$titleAndMessage must have 2 elements (title & message)');
     return titleAndMessage;
   }

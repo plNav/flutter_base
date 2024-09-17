@@ -1,9 +1,20 @@
 {
-  "exampleTranslation1": "Beispielübersetzung 1",
-  "exampleTranslation2": "Beispielübersetzung 2",
+  "login": "ANMELDEN",
+  "username": "Benutzername",
+  "password": "Passwort",
   "accept": "akzeptieren",
-  "loginError": "Login Error",
+  "loginError": "Login-Fehler",
   "loginUserEmpty": "Der Benutzername darf nicht leer sein",
   "loginPassEmpty": "Das Passwort darf nicht leer sein",
-  "loginIncorrect": "Der Benutzername oder das Passwort ist falsch"
+  "loginIncorrect": "Der Benutzername oder das Passwort ist falsch",
+  "loadingAuth": "Authentifizieren...",
+  "loadingUser": "Benutzerinformationen werden geladen...",
+  "buttonPreview": "Zur Widget-Vorschau gehen",
+  "buttonClearStorage": "Persistierte Daten löschen",
+  "exit": "Beenden",
+  "exitQuestion": "Sind Sie sicher, dass Sie beenden möchten?",
+  "language": "Sprache",
+  "theme": "Thema",
+  "internetError": "Verbindungsfehler",
+  "internetUnavailable": "Verbinden Sie sich mit dem Internet"
 }

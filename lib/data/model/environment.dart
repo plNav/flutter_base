@@ -1,4 +1,5 @@
-import 'package:baccus_kitchen/utils/console_printer.dart';
+
+import '../../utils/console_printer.dart';
 
 /// Provides Env Variables. Private Constructor - does not need Equatable imp or copyWith method
 class Environment {
@@ -16,8 +17,8 @@ class Environment {
     const baseUrl = String.fromEnvironment('PROJECT_URL', defaultValue: 'DEFAULT URL');
     const secretKey = String.fromEnvironment('PROJECT_KEY', defaultValue: 'DEFAULT KEY');
 
-    printC(purple, '''
-    DEBUG ENVIRONMENT
+    printC(warning, '''
+    \nDEBUG ENVIRONMENT
       - BaseUrl: $baseUrl
       - SecretKey: $secretKey
     ''');

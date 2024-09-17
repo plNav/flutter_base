@@ -1,11 +1,12 @@
-import 'package:baccus_kitchen/data/model/persisted_config_data.dart';
+import '../../../data/model/persisted_config_data.dart';
 
 abstract class IPersistenceConfigService {
+  /// ### Encrypts config data and stores it locally
   Future<void> saveData(PersistedConfigData data);
 
+  /// ### Obtains and decrypts persisted local data with [id]=0
   Future<PersistedConfigData?> getData();
 
-  Future<List<PersistedConfigData>> getAllData();
-
-  Future<void> deleteData(int id);
+  /// ### Clears PersistedConfigData all registries
+  Future<void> deleteAll();
 }

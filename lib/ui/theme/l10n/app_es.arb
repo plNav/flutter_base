@@ -1,9 +1,20 @@
 {
-  "exampleTranslation1": "Ejemplo Traducción1",
-  "exampleTranslation2": "Ejemplo Traducción2",
+  "login": "Iniciar Sesión",
+  "username": "Usuario",
+  "password": "Contraseña",
   "accept": "Aceptar",
   "loginError": "Login Error",
   "loginUserEmpty": "El usuario no puede estar vacío",
   "loginPassEmpty": "La contraseña no puede estar vacía",
-  "loginIncorrect": "El usuario o la contraseña no son válidos"
+  "loginIncorrect": "El usuario o la contraseña no son válidos",
+  "loadingAuth": "Autenticando...",
+  "loadingUser": "Cargando información...",
+  "buttonPreview": "Ir a Previsualización de Widgets",
+  "buttonClearStorage": "Borrar datos persistidos",
+  "exit": "Salir",
+  "exitQuestion": "¿Seguro que quieres salir?",
+  "language": "Idioma",
+  "theme": "Tema",
+  "internetError": "Error de Conexión",
+  "internetUnavailable": "Conéctate a internet"
 }

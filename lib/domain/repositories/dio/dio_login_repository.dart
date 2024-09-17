@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:baccus_kitchen/data/dto/login_response_dto.dart';
-import 'package:baccus_kitchen/data/dto/user_dto.dart';
-import 'package:baccus_kitchen/data/enum/exception_type.dart';
-import 'package:baccus_kitchen/data/model/exception_custom.dart';
-import 'package:baccus_kitchen/data/model/user.dart';
-import 'package:baccus_kitchen/domain/repositories/abstractions/i_login_repository.dart';
-import 'package:baccus_kitchen/domain/repositories/i_dio_repository.dart';
+import '../../../data/dto/login_response_dto.dart';
+import '../../../data/dto/user_dto.dart';
+import '../../../data/enum/exception_type.dart';
+import '../../../data/model/exception_custom.dart';
+import '../../../data/model/user.dart';
+import '../abstractions/i_login_repository.dart';
+import '../i_dio_repository.dart';
 
 class DioLoginRepository extends IDioRepository implements ILoginRepository {
   DioLoginRepository({super.url = '/login'});

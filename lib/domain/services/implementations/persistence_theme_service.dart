@@ -1,6 +1,6 @@
-import 'package:baccus_kitchen/data/model/persisted_theme_data.dart';
-import 'package:baccus_kitchen/domain/repositories/abstractions/i_persistence_theme_repository.dart';
-import 'package:baccus_kitchen/domain/services/abstractions/i_persistence_theme_service.dart';
+import '../../../data/model/persisted_theme_data.dart';
+import '../../repositories/abstractions/i_persistence_theme_repository.dart';
+import '../abstractions/i_persistence_theme_service.dart';
 
 class PersistenceThemeService implements IPersistenceThemeService {
   final IPersistenceThemeRepository _persistenceThemeRepository;
@@ -19,14 +19,7 @@ class PersistenceThemeService implements IPersistenceThemeService {
   }
 
   @override
-  Future<List<PersistedThemeData>> getAllData() async {
-    // TODO: implement getAllData
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> deleteData(int id) async {
-    // TODO: implement deleteData
-    throw UnimplementedError();
+  Future<void> deleteAll() async {
+    return await _persistenceThemeRepository.deleteAll();
   }
 }

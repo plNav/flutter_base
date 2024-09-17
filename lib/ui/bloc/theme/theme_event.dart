@@ -7,9 +7,17 @@ abstract class ThemeEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class LoadPersistedThemeEvent extends ThemeEvent {}
-
 class ToggleSchemaEvent extends ThemeEvent {}
+
+class LoadPersistedThemeEvent extends ThemeEvent {
+  final ThemeMode initialTheme;
+  final Locale initialLocale;
+
+  const LoadPersistedThemeEvent({required this.initialTheme, required this.initialLocale});
+
+  @override
+  List<Object?> get props => [initialTheme, initialLocale];
+}
 
 class ChangeLocaleEvent extends ThemeEvent {
   final SupportedLocale locale;

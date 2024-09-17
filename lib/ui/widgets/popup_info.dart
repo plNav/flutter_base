@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'button_custom.dart';
 
 class PopupInfo {
   static void show({
@@ -8,13 +11,14 @@ class PopupInfo {
     required String message,
     Function()? onConfirm,
     bool isDismissible = true,
+    bool isWarning = false,
   }) {
     showGeneralDialog(
       context: context,
       barrierDismissible: isDismissible,
       barrierLabel: '',
       pageBuilder: (_, __, ___) => const SizedBox(),
-      // We use this boilerplate to animate when popup show or dismiss
+      // We use this boilerplate to animate show and dismiss
       transitionDuration: const Duration(milliseconds: 200),
       transitionBuilder: (_, a1, a2, widget) {
         return Transform.scale(
@@ -25,19 +29,37 @@ class PopupInfo {
               title: title,
               message: message,
               onConfirm: onConfirm,
+              isWarning: isWarning,
             ),
           ),
         );
       },
     );
   }
+
+  static void handleExitApp(BuildContext context) {
+    final AppLocalizations translator = AppLocalizations.of(context)!;
+    show(
+      context: context,
+      isWarning: true,
+      title: translator.exit,
+      message: translator.exitQuestion,
+      onConfirm: () => SystemNavigator.pop(),
+    );
+  }
 }
 
 class _PopupInfoContent extends StatelessWidget {
-  const _PopupInfoContent({required this.title, required this.message, this.onConfirm});
+  const _PopupInfoContent({
+    required this.title,
+    required this.message,
+    required this.isWarning,
+    this.onConfirm,
+  });
 
   final String title;
   final String message;
+  final bool isWarning;
   final Function()? onConfirm;
 
   @override
@@ -48,7 +70,9 @@ class _PopupInfoContent extends StatelessWidget {
       title: Text(title),
       content: Text(message),
       actions: [
-        ElevatedButton(
+        CustomButton(
+          buttonKey: const Key('Info Popup Button'),
+          isError: isWarning,
           onPressed: () {
             Navigator.of(context).pop();
             onConfirm?.call();

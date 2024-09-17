@@ -1,9 +1,21 @@
 {
-  "exampleTranslation1": "Example Translation1",
-  "exampleTranslation2": "Example Translation2",
+  "login": "LOGIN",
+  "username": "Username",
+  "password": "Password",
   "accept": "Accept",
   "loginError": "Login Error",
   "loginUserEmpty": "The username cannot be empty",
   "loginPassEmpty": "The password cannot be empty",
-  "loginIncorrect": "The username or password is incorrect"
+  "loginIncorrect": "The username or password is incorrect",
+  "loadingAuth": "Authenticating...",
+  "loadingUser": "Loading user information...",
+  "buttonPreview": "Go to Widget Preview",
+  "buttonClearStorage": "Clear Persisted Data",
+  "exit": "Exit",
+  "exitQuestion": "Are you sure to exit?",
+  "language": "Language",
+  "theme": "Theme",
+  "internetError": "Connection Error",
+  "internetUnavailable": "Connect to the internet"
+
 }

@@ -7,6 +7,10 @@ abstract class LoginEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+class LoadPersistedConfigEvent extends LoginEvent {}
+
+class ConfirmErrorEvent extends LoginEvent {}
+
 class InputUserEvent extends LoginEvent {
   final User user;
 
@@ -15,7 +19,3 @@ class InputUserEvent extends LoginEvent {
   @override
   List<Object?> get props => [user];
 }
-
-class ConfirmErrorEvent extends LoginEvent {}
-
-class TestIsarEvent extends LoginEvent {}
